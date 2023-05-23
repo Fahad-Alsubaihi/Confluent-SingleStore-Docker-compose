@@ -7,7 +7,7 @@
 Download the Docker compose file
 open it and put your license key in line 58
 ## Step 2
-Go to the directory that you put docker compose file in it 
+Navigate to the directory where you have saved the Docker Compose file, 
 and run this command 
 ```
  docker-compose up
