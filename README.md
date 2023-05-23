@@ -5,7 +5,7 @@
 
 ## Step 1
 Download the Docker compose file
-
+open it and put your license key in line 58
 ## Step 2
 Go to the directory that you put docker compose file in it 
 and run this command 
