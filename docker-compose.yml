@@ -56,7 +56,8 @@ services:
     - 8080:8080
     environment:
     # use the LICENSE_KEY environment variable set in the terminal:
-    - LICENSE_KEY=BGE0NWU0MTM4ZWE2ZTRlZTE5YzRlMGM0OTcxZGU2MTE3AAAAAAAAAAAEAAAAAAAAACgwNgIZALddhAr5khGmZepufunVu7Ck8gb8t3qCewIZAO2XJls79Sro9dafvru3PfG+zkWRy3yQ/g==
+#     TODO put your LICENSE_KEY you can find it in this URL https://portal.singlestore.com and uncomment the command 
+#     - LICENSE_KEY=
     - START_AFTER_INIT=Y
     - ROOT_PASSWORD=root
   # ***************** Memsql Added ********************
