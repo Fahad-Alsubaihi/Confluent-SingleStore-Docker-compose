@@ -12,7 +12,7 @@ and run this command
 ```
  docker-compose up
 ```
-## some time you may got errors with pulling requests, you can try to pull images individually in this order:
+## some time you may got errors with pulling requests, you can try to pull images individually in this order (most of the cases you don't need to download all of these containers to run pipeline):
 ---------------------------------------------------
 zookeeper:
 ```
