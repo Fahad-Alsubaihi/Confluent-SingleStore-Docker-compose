@@ -12,48 +12,53 @@ and run this command
 ```
  docker-compose up
 ```
-## some time you may got errors with pulling requests, you can try to pull them individually in this order:
-
-zookeeper
+## some time you may got errors with pulling requests, you can try to pull images individually in this order:
+---------------------------------------------------
+zookeeper:
 ```
  docker pull confluentinc/cp-zookeeper:7.3.2
 ```
-broker
+broker:
 ```
  docker pull confluentinc/cp-server:7.3.2
 ```
-memsql
+memsql:
 ```
  docker pull memsql/cluster-in-a-box
 ```
-schema-registry
+schema-registry:
 ```
  docker pull confluentinc/cp-schema-registry:7.3.2
 ```
-connect
+connect:
 ```
  docker pull cnfldemos/cp-server-connect-datagen:0.5.3-7.1.0
 ```
-ksqldb-server
+ksqldb-server:
 ```
  docker pull confluentinc/cp-ksqldb-server:7.3.2
 ```
-control-center
+control-center:
 ```
  docker pull confluentinc/cp-enterprise-control-center:7.3.2
 ```
-ksqldb-cli
+ksqldb-cli:
 ```
  docker pull confluentinc/cp-ksqldb-cli:7.3.2
 ```
-ksql-datagen
+ksql-datagen:
 ```
 docker pull confluentinc/ksqldb-examples:7.3.2
 ```
-rest-proxy
+rest-proxy:
 ```
 docker pull confluentinc/cp-kafka-rest:7.3.2
 ```
+then run: 
+```
+ docker-compose up
+```
+----------------
 Once the containers are up and running, you can create the SingleStore pipeline.
 you need to open Control Center and SingleStore portal in your browser to make sure everything is working fine.
 #### Control Center
