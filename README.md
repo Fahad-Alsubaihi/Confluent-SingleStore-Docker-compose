@@ -6,6 +6,10 @@
 ## Step 1
 Download the Docker compose file
 open it and put your license key in line 58
+you can get your license key from this URL:
+```
+https://portal.singlestore.com
+```
 ## Step 2
 Navigate to the directory where you have saved the Docker Compose file, 
 and run this command 
@@ -83,7 +87,7 @@ it look like this :
 ```
 KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:29092,PLAINTEXT_HOST://localhost:9092
 ```
-replace (0.0.0.0) with IP address of schema-registry
+replace (0.0.0.0) with IP address of schema-registry container on line 75 after TODO statment
 ```
 SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081
 ```
