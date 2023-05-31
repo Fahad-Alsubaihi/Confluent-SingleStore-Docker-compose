@@ -184,7 +184,7 @@ CREATE DATABASE IF NOT EXISTS name_of_DB;
 ```
 Select it:
 ```
-USE name_of_DB
+USE name_of_DB;
 ```
 Create new table:
 ```
@@ -212,7 +212,21 @@ SCHEMA REGISTRY 'IP:Port(ex:localhost:8081)'
 );
 
 ```
+Test your pipeline to check the configration work fine:
+```
+TEST PIPELINE name_of_pipeline;
+```
+Command to debug Pipeline if it fails:
+```
+SELECT PIPELINE_NAME , ERROR_KIND, ERROR_CODE, ERROR_MESSAGE, LOAD_DATA_LINE_NUMBER, LOAD_DATA_LINE
+FROM information_schema.PIPELINES_ERRORS
+WHERE PIPELINE_NAME = 'pl_docker_kafka';
+```
+Start your pipeline:
+```
+START PIPELINE name_of_pipeline;
+```
 
-Now you can see the messages that you write in your topic stored in SingleStore.
+Now you can see the messages that you write in your topic stored in SingleStore table.
 ---------------
 
