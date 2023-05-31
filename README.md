@@ -83,9 +83,16 @@ it look like this :
 ```
 KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:29092,PLAINTEXT_HOST://localhost:9092
 ```
-### run the following command to get the broker IP address:
+replace (0.0.0.0) with IP address of schema-registry
+```
+SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081
+```
+### run the following command to get the broker & schema-registry IP address:
 ```
  docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' broker
+```
+```
+ docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' schema-registry
 ```
 
 ### then run this Command to update your broker container 
@@ -115,8 +122,56 @@ docker run --rm -it --network=cp-all-in-one_default confluentinc/cp-kafka-connec
 ```
 Output example:
 ```
-[appuser@0b123856d312 ~]$ 
+[appuser@0b123856d312 ~]$
 ```
-## Now you can run the confluent commands here
+Create new topic with new schema with Avro format Control Center 
+Schema ex: 
+```
+{
+  "doc": "Sample schema to help you get started.",
+  "fields": [
+    {
+      "doc": "The string is a unicode character sequence.",
+      "name": "f1",
+      "type": "string"
+    },
+    {
+      "doc": "The string is a unicode character sequence.",
+      "name": "f2",
+      "type": "string"
+    },
+    {
+      "doc": "The string is a unicode character sequence.",
+      "name": "f3",
+      "type": "string"
+    }
+  ],
+  "name": "sampleRecord",
+  "namespace": "com.mycorp.mynamespace",
+  "type": "record"
+}
+```
+you can see schema id created you will need it in the next command 
+
+Create Producer 
+```
+[appuser@0b123856d312 ~]kafka-avro-console-producer --bootstrap-server IP:Port(ex:172.20.0.3:9092)  --property schema.registry.url=http://IP:Port(ex:172.20.0.4:8081) --topic topic_name --property value.schema.id=your schema ip
+```
+
+Write some messages (one by one), after you finished click (Ctrl+C).
+
+message ex:
+```
+{"f1":"A" ,"f2":"1111","f3":"AA11"}
+{"f1":"B" ,"f2":"22222","f3":"BB22"}
+{"f1":"C" ,"f2":"3333","f3":"CC33"}
+
+```
+Create Consumer 
+```
+[appuser@0b123856d312 ~]$kafka-avro-console-consumer  --bootstrap-server IP:Port(ex:172.20.0.3:9092)  --property schema.registry.url=http://IP:Port(ex:172.20.0.4:8081) --topic topic_name --from-beginning  --timeout-ms 5000 --max-messages 1000
+```
+Create pipeline
+Now you can see the message that you write.
 ---------------
 
