@@ -129,6 +129,7 @@ Output example:
 [appuser@0b123856d312 ~]$
 ```
 Create new topic with new schema in Avro format Control Center 
+
 Schema ex: 
 ```
 {
@@ -175,7 +176,43 @@ Create Consumer
 ```
 [appuser@0b123856d312 ~]$kafka-avro-console-consumer  --bootstrap-server IP:Port(ex:172.20.0.3:9092)  --property schema.registry.url=http://IP:Port(ex:172.20.0.4:8081) --topic topic_name --from-beginning  --timeout-ms 5000 --max-messages 1000
 ```
-Create pipeline
-Now you can see the message that you write.
+Now the messages is ready go to SingleStore Studio
+
+Creaete new datebase:
+```
+CREATE DATABASE IF NOT EXISTS name_of_DB;
+```
+Select it:
+```
+USE name_of_DB
+```
+Create new table:
+```
+CREATE TABLE name_of_table(
+ f1 varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL 
+,f2 varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
+,f3 varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
+);
+
+```
+Create Pipeline:
+```
+CREATE PIPELINE name_of_pipeline
+AS LOAD DATA KAFKA 'IP:Port/topic_name(ex:localhost:9092/test_docker_kafka)'
+BATCH_INTERVAL 2500
+ENABLE OUT_OF_ORDER OPTIMIZATION
+SKIP CONSTRAINT ERRORS
+INTO TABLE name_of_table
+FORMAT AVRO
+SCHEMA REGISTRY 'IP:Port(ex:localhost:8081)'
+(
+    `name_of_table`.`f1` <- `f1`,
+    `name_of_table`.`f2` <- `f2`,
+    `name_of_table`.`f3` <- `f3`
+);
+
+```
+
+Now you can see the messages that you write in your topic stored in SingleStore.
 ---------------
 
