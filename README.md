@@ -7,9 +7,9 @@
 Download the Docker compose file
 open it and put your license key in line 58
 you can get your license key from this URL:
-```
-https://portal.singlestore.com
-```
+
+[https://portal.singlestore.com](https://portal.singlestore.com)
+
 ## Step 2
 Navigate to the directory where you have saved the Docker Compose file, 
 and run this command 
