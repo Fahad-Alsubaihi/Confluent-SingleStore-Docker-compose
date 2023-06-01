@@ -160,7 +160,7 @@ you can see schema id created you will need it in the next command
 
 Create Producer 
 ```
-[appuser@0b123856d312 ~]kafka-avro-console-producer --bootstrap-server IP:Port(ex:172.20.0.3:9092)  --property schema.registry.url=http://IP:Port(ex:172.20.0.4:8081) --topic topic_name --property value.schema.id=your schema ip
+kafka-avro-console-producer --bootstrap-server IP:Port(ex:172.20.0.3:9092)  --property schema.registry.url=http://IP:Port(ex:172.20.0.4:8081) --topic topic_name --property value.schema.id=your schema ip
 ```
 
 Write some messages (one by one), after you finished click (Ctrl+C).
@@ -174,7 +174,7 @@ message ex:
 ```
 Create Consumer 
 ```
-[appuser@0b123856d312 ~]$kafka-avro-console-consumer  --bootstrap-server IP:Port(ex:172.20.0.3:9092)  --property schema.registry.url=http://IP:Port(ex:172.20.0.4:8081) --topic topic_name --from-beginning  --timeout-ms 5000 --max-messages 1000
+kafka-avro-console-consumer  --bootstrap-server IP:Port(ex:172.20.0.3:9092)  --property schema.registry.url=http://IP:Port(ex:172.20.0.4:8081) --topic topic_name --from-beginning  --timeout-ms 5000 --max-messages 1000
 ```
 Now the messages is ready go to SingleStore Studio
 
