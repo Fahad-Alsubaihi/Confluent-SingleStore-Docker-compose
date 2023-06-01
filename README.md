@@ -128,7 +128,7 @@ Output example:
 ```
 [appuser@0b123856d312 ~]$
 ```
-Create new topic with new schema in Avro format Control Center 
+Create new topic with new schema in Avro format from Control Center 
 
 Schema ex: 
 ```
