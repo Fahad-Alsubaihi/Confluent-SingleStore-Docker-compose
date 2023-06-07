@@ -195,22 +195,3 @@ services:
   #     KAFKA_REST_BOOTSTRAP_SERVERS: 'broker:29092'
   #     KAFKA_REST_LISTENERS: "http://0.0.0.0:8082"
   #     KAFKA_REST_SCHEMA_REGISTRY_URL: 'http://schema-registry:8081'
-  
-  # Confluent_CLI:
-  #   image: confluentinc/cp-kafka-connect
-  #   depends_on:
-  #     - broker
-  #     - schema-registry
-  #   container_name: Confluent_CLI
-  #   # ports:
-  #   #   - "8083:8083"
-  #   environment:
-  #     CONNECT_BOOTSTRAP_SERVERS: broker:29092
-  #     CONNECT_REST_ADVERTISED_HOST_NAME: kafka-connect
-  #     CONNECT_GROUP_ID: kafka-connect-group
-  #     CONNECT_CONFIG_STORAGE_TOPIC: kafka-connect-configs
-  #     CONNECT_OFFSET_STORAGE_TOPIC: kafka-connect-offsets
-  #     CONNECT_STATUS_STORAGE_TOPIC: kafka-connect-status
-  #     CONNECT_CONFIG_STORAGE_REPLICATION_FACTOR: 1
-  #     CONNECT_OFFSET_STORAGE_REPLICATION_FACTOR: 1
-  #     CONNECT_STATUS_STORAGE_REPLICATION_FACTOR: 1
