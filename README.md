@@ -76,33 +76,6 @@ you need to open Control Center and SingleStore portal in your browser to make s
 Create pipeline 
 
 
-### Note :
-#### If the pipeline doesn't created, Sometime you may get this error:
-```
-ERROR 1933 ER_EXTRACTOR_EXTRACTOR_GET_LATEST_OFFSETS: Cannot get source metadata for pipeline. Could not fetch Kafka metadata; are the Kafka brokers reachable from the Master Aggregator? ssl.ca.location is missing. Kafka error Local: Broker transport failure
-Run this command to get IP address of broker container
-```
-#### To solve it you need to replace (localhost) with the (IP address) of the broker container on line 29 after TODO statment.
-it look like this :
-```
-KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:29092,PLAINTEXT_HOST://localhost:9092
-```
-replace (0.0.0.0) with IP address of schema-registry container on line 75 after TODO statment
-```
-SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081
-```
-### run the following command to get the broker & schema-registry IP address:
-```
- docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' broker
-```
-```
- docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' schema-registry
-```
-
-### then run this Command to update your broker container 
-```
- docker-compose up -d
-``` 
 ---------------
 # Advance Steps
 ## If you want to run confluent CLI follow these:
