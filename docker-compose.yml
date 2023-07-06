@@ -48,6 +48,7 @@ services:
     image: memsql/cluster-in-a-box
     init: true
     container_name: memsql
+    hostname: memsql
     depends_on:
       - broker
     ports:
