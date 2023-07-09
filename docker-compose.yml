@@ -1,5 +1,8 @@
 ---
 version: '2'
+
+
+
 services:
 
   zookeeper:
@@ -43,23 +46,50 @@ services:
       CONFLUENT_METRICS_ENABLE: 'true'
       CONFLUENT_SUPPORT_CUSTOMER_ID: 'anonymous'
 
-# add memsql to kafka container 
-  memsql:
-    image: memsql/cluster-in-a-box
-    init: true
-    container_name: memsql
-    hostname: memsql
-    depends_on:
-      - broker
-    ports:
-    - 3306:3306
-    - 8080:8080
+# # add memsql to kafka container 
+#   memsql:
+#     image: memsql/cluster-in-a-box
+#     init: true
+#     hostname: memsql
+#     container_name: memsql
+#     depends_on:
+#       - broker
+#     ports:
+#     - 3306:3306
+#     - 8080:8080
+#     expose:
+#     - '3306'
+#     environment:
+#     # use the LICENSE_KEY environment variable set in the terminal:
+#     - LICENSE_KEY=BGE0NWU0MTM4ZWE2ZTRlZTE5YzRlMGM0OTcxZGU2MTE3AAAAAAAAAAAEAAAAAAAAACgwNgIZALddhAr5khGmZepufunVu7Ck8gb8t3qCewIZAO2XJls79Sro9dafvru3PfG+zkWRy3yQ/g==
+#     - START_AFTER_INIT=Y
+#     - ROOT_PASSWORD=root
+#   # # ***************** Memsql Added ********************
+
+
+  # --------------MySql Database-----------------
+  mysql:
+    image: mysql:5.7
+    hostname: Mysql
+    container_name: Mysql
+    # to always restart the container if it stops for any reason
+    restart: always
     environment:
-    # use the LICENSE_KEY environment variable set in the terminal:
-    - LICENSE_KEY=####
-    - START_AFTER_INIT=Y
-    - ROOT_PASSWORD=root
-  # ***************** Memsql Added ********************
+    # sets the name of the database that will be created when the MySQL container
+    # If you don't set this environment variable, MySQL will create a default database with the name "test"
+      MYSQL_DATABASE: 'mysql_kafka'
+    # to add user for your Mysql database
+      # MYSQL_USER: 'user'
+      # MYSQL_PASSWORD: 'password'
+      # password for root user
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - MySql-kafka:/var/lib/mysql
+    # open the ciontainer terminal in docker the past this [mysql -uroot -proot] 
 
   schema-registry:
     image: confluentinc/cp-schema-registry:7.3.2
@@ -126,6 +156,10 @@ services:
       CONTROL_CENTER_MONITORING_INTERCEPTOR_TOPIC_PARTITIONS: 1
       CONFLUENT_METRICS_TOPIC_REPLICATION: 1
       PORT: 9021
+# By defining the volume as a named volume, Docker will automatically create and manage the volume for you
+# it used for MySql
+volumes:
+  MySql-kafka:
 
   # ksqldb-server:
   #   image: confluentinc/cp-ksqldb-server:7.3.2
@@ -215,3 +249,5 @@ services:
   #     CONNECT_CONFIG_STORAGE_REPLICATION_FACTOR: 1
   #     CONNECT_OFFSET_STORAGE_REPLICATION_FACTOR: 1
   #     CONNECT_STATUS_STORAGE_REPLICATION_FACTOR: 1
+
+
