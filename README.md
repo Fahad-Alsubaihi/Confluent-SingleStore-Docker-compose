@@ -75,11 +75,15 @@ you need to open Control Center and SingleStore portal in your browser to make s
 ## Step 3 
 Create pipeline 
 ---------------
-# Use JDBC Connector with SingleStore 
+# Use JDBC Connector
 open docker desktop -> go to connect container -> open terminal -> run this command and run it 
 ```
 confluent-hub install confluentinc/kafka-connect-jdbc:10.7.3
 ```
+to read more about how to add drivers to JDBC Confluent Connector follow this link [JDBC Drivers](https://docs.confluent.io/kafka-connectors/jdbc/current/jdbc-drivers.html)
+
+### Add SingleStore Driver to JDBC Connector
+
 To use JDBC with SingleStore based on SingleStore Doc [Connect with Java/JDBC](https://docs.singlestore.com/managed-service/en/developer-resources/connect-with-application-development-tools/connect-with-java-jdbc.html#:~:text=Check%20it%20out-,Connect%20with%20Java/JDBC,-You%20can%20connect) 
 
 you need to download one of these drivers:
