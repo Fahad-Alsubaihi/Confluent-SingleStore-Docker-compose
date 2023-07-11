@@ -89,7 +89,7 @@ services:
       - '3306'
     volumes:
       - MySql-kafka:/var/lib/mysql
-    # open the ciontainer terminal in docker the past this [mysql -uroot -proot] 
+    # open the container terminal in docker the past this [mysql -uroot -proot] 
 
   schema-registry:
     image: confluentinc/cp-schema-registry:7.3.2
