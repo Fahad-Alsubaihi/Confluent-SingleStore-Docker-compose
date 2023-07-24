@@ -99,10 +99,16 @@ Add this Container to docker Compose file:
       - '3306:3306'
     expose:
       - '3306'
-    # open the container terminal in docker the paste this [mysql -uroot -proot] 
+```
+If memsql still running on docker compose make memsql container comment or change the port number of Mysql.
+memsql Container:
+```
 ```
 Run this command:
 ```
 docker-compose up -d
 ```
-open docker desktop and go to Mysql Container -> 
+open docker desktop -> go to Mysql container -> open terminal -> run this command:
+```
+mysql -uroot -proot
+```
