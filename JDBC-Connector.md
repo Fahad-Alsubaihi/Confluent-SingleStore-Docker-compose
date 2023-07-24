@@ -26,3 +26,54 @@ now open CMD and navigate to docker compose file then run this command
 ```
 docker-compose restart
 ```
+
+---------------
+## source_connector.json:
+This Connector will create Topic and schema Automatically.
+Create json file whis this configration:
+```
+{
+    "name":"Source_connector_Name",
+    "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
+    "transforms": "setSchema",
+    "transforms.setSchema.type": "org.apache.kafka.connect.transforms.SetSchemaMetadata$Value",
+    "transforms.setSchema.schema.name": "Schema_Name",
+    "connection.url": "jdbc:singlestore://memsql:3306/DB_Name",
+    "connection.user": "root",
+    "connection.password": "root",
+    "tasks.max":"1",
+    "query": "SELECT * FROM Your_Table_Name",
+    "table.type": "TABLE",
+    "topic.prefix": "Topic_Name",
+    "incrementing.column.name": "Your_Column_Name",
+    "mode":"incrementing",
+    "numeric.mapping":"best_fit",
+    "poll.interval.ms": "5000",
+    "key.converter": "io.confluent.connect.avro.AvroConverter",
+    "value.converter": "io.confluent.connect.avro.AvroConverter",
+    "key.converter.schema.registry.url": "http://schema-registry:8081",
+    "value.converter.schema.registry.url": "http://schema-registry:8081"
+}
+```
+## Sink_Connector.json:
+This Connector will create Table Automatically.
+Create json file whis this configration:
+```
+{
+    "name":"test03_Sink_Connector",
+    "connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
+    "topics": "Your_Topic_Name",
+    "connection.url": "jdbc:singlstore://memsql:3306/DB_Name",
+    "connection.user": "root",
+    "connection.password": "root",
+    "tasks.max":"1",
+    "auto.create":"true",
+    "auto.evolve": "true",
+    "insert.mode": "insert",
+    "key.converter": "io.confluent.connect.avro.AvroConverter",
+    "value.converter": "io.confluent.connect.avro.AvroConverter",
+    "key.converter.schema.registry.url": "http://schema-registry:8081",
+    "value.converter.schema.registry.url": "http://schema-registry:8081"
+
+}
+```
