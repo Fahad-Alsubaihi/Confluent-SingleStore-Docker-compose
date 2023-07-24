@@ -71,6 +71,8 @@ you need to open Control Center and SingleStore portal in your browser to make s
 
 #### SingleStore Studio
 [http//:localhost:8080](http://localhost:8080/)
+- User name: root
+- Password: root
 
 ## Step 3 
 Create pipeline 
