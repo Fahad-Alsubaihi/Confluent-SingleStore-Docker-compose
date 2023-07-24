@@ -78,4 +78,31 @@ Create json file whis this configration:
 }
 ```
 ## MySql DB with JDBC Connector:
-
+Add this Container to docker Compose file:
+```
+  mysql:
+    image: mysql:5.7
+    hostname: Mysql
+    container_name: Mysql
+    # to always restart the container if it stops for any reason
+    restart: always
+    environment:
+    # sets the name of the database that will be created when the MySQL container
+    # If you don't set this environment variable, MySQL will create a default database with the name "test"
+      MYSQL_DATABASE: 'mysql_kafka'
+    # to add user for your Mysql database
+      # MYSQL_USER: 'user'
+      # MYSQL_PASSWORD: 'password'
+      # password for root user
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    # open the container terminal in docker the paste this [mysql -uroot -proot] 
+```
+Run this command:
+```
+docker-compose up -d
+```
+open docker desktop and go to Mysql Container -> 
