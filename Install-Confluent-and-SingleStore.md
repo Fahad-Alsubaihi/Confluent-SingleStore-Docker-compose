@@ -148,6 +148,7 @@ Create Consumer
 ```
 kafka-avro-console-consumer  --bootstrap-server IP:Port(ex:172.20.0.3:9092)  --property schema.registry.url=http://IP:Port(ex:172.20.0.4:8081) --topic topic_name --from-beginning  --timeout-ms 5000 --max-messages 1000
 ```
+To Create Pipeline between Kafka and SingleStore follow this Link [Create SingleStore Pipeline](https://github.com/Fahad-Alsubaihi/Kafka-Confluent-SingleStore-Docker-compose/blob/main/SingleStore-Pipeline-With-Kafka.md)
 Now the messages is ready go to SingleStore Studio
 ---------------
 
