@@ -87,8 +87,8 @@ services:
       - '3306:3306'
     expose:
       - '3306'
-    volumes:
-      - MySql-kafka:/var/lib/mysql
+    # volumes:
+    #   - MySql-kafka:/var/lib/mysql
     # open the container terminal in docker the paste this [mysql -uroot -proot] 
 
   schema-registry:
@@ -158,8 +158,8 @@ services:
       PORT: 9021
 # By defining the volume as a named volume, Docker will automatically create and manage the volume for you
 # it used for MySql
-volumes:
-  MySql-kafka:
+## volumes:
+##   MySql-kafka:
 
   # ksqldb-server:
   #   image: confluentinc/cp-ksqldb-server:7.3.2
