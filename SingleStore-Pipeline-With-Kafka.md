@@ -1,4 +1,4 @@
-# Creat SingleStore Pipeline:
+# Create SingleStore Pipeline:
 
 Creaete new datebase:
 ```
