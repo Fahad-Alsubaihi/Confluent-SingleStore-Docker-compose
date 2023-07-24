@@ -101,7 +101,7 @@ drag JAR file and drop it into lib folder
 
 now open CMD and navigate to docker compose file then run this command 
 ```
-docker compose restart
+docker-compose restart
 ```
 
 ---------------
