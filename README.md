@@ -76,7 +76,7 @@ you need to open Control Center and SingleStore portal in your browser to make s
 Create pipeline 
 ---------------
 # Use JDBC Connector
-open docker desktop -> go to connect container -> open terminal -> run this command and run it 
+open docker desktop -> go to connect container -> open terminal -> run this command
 ```
 confluent-hub install confluentinc/kafka-connect-jdbc:10.7.3
 ```
