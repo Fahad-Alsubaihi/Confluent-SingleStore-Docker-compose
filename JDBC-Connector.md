@@ -103,6 +103,25 @@ Add this Container to docker Compose file:
 If memsql still running on docker compose make memsql container comment or change the port number of Mysql.
 memsql Container:
 ```
+ # add memsql to kafka container 
+   memsql:
+     image: memsql/cluster-in-a-box
+     init: true
+     hostname: memsql
+     container_name: memsql
+     depends_on:
+       - broker
+     ports:
+     - 3306:3306
+     - 8080:8080
+     expose:
+     - '3306'
+     environment:
+     # use the LICENSE_KEY environment variable set in the terminal:
+     - LICENSE_KEY=BGE0NWU0MTM4ZWE2ZTRlZTE5YzRlMGM0OTcxZGU2MTE3AAAAAAAAAAAEAAAAAAAAACgwNgIZALddhAr5khGmZepufunVu7Ck8gb8t3qCewIZAO2XJls79Sro9dafvru3PfG+zkWRy3yQ/g==
+     - START_AFTER_INIT=Y
+     - ROOT_PASSWORD=root
+   # # ***************** Memsql Added ********************
 ```
 Run this command:
 ```
