@@ -16,7 +16,7 @@ and run this command
 ```
  docker-compose up
 ```
-## sometimes you may get errors with pulling requests, you can try to pull images individually in this order (in most of cases you don't need to download all of these containers to run pipeline):
+## Sometimes you may get errors with pulling requests, you can try to pull images individually in this order (in most of cases you don't need to download all of these containers to run pipeline):
 ---------------------------------------------------
 zookeeper:
 ```
@@ -130,7 +130,7 @@ Schema ex:
   "type": "record"
 }
 ```
-you can see the schema id created You will need it in the next command 
+you can see the schema ID created You will need it in the next command 
 
 Create Producer 
 ```
