@@ -1,12 +1,12 @@
 # Kafka-Confluent-SingleStore-Docker-compose
 
 # Description 
-## Docker compose file that create Confluent and SingleStore containers on the same network so you can create pipeline between SingleStore and kafka locally 
+## Docker compose file that creates Confluent and SingleStore containers on the same network so you can create a pipeline between SingleStore and Kafka locally 
 
 ## Step 1
 Download the Docker compose file
-open it and put your license key in line 58
-you can get your license key from this URL:
+Open it and put your license key in line 58
+You can get your license key from this URL:
 
 [https://portal.singlestore.com](https://portal.singlestore.com)
 
@@ -16,7 +16,7 @@ and run this command
 ```
  docker-compose up
 ```
-## some time you may got errors with pulling requests, you can try to pull images individually in this order (most of the cases you don't need to download all of these containers to run pipeline):
+## sometimes you may get errors with pulling requests, you can try to pull images individually in this order (in most of cases you don't need to download all of these containers to run pipeline):
 ---------------------------------------------------
 zookeeper:
 ```
@@ -75,7 +75,7 @@ you need to open Control Center and SingleStore portal in your browser to make s
 - Password: root
 
 ## Step 3 
-Create pipeline 
+Create Pipeline 
 ---------------
 
 # Advance Steps
@@ -102,7 +102,7 @@ Output example:
 ```
 [appuser@0b123856d312 ~]$
 ```
-Create new topic with new schema in Avro format from Control Center 
+Create a new topic with a new schema in Avro format from the Control Center 
 
 Schema ex: 
 ```
@@ -130,7 +130,7 @@ Schema ex:
   "type": "record"
 }
 ```
-you can see schema id created you will need it in the next command 
+you can see the schema id created You will need it in the next command 
 
 Create Producer 
 ```
@@ -150,7 +150,7 @@ Create Consumer
 ```
 kafka-avro-console-consumer  --bootstrap-server IP:Port(ex:172.20.0.3:9092)  --property schema.registry.url=http://IP:Port(ex:172.20.0.4:8081) --topic topic_name --from-beginning  --timeout-ms 5000 --max-messages 1000
 ```
-- To Create Pipeline between Kafka and SingleStore follow this Link [Create SingleStore Pipeline](https://github.com/Fahad-Alsubaihi/Kafka-Confluent-SingleStore-Docker-compose/blob/main/SingleStore-Pipeline-With-Kafka.md).
+- To Create a Pipeline between Kafka and SingleStore follow this Link [Create SingleStore Pipeline](https://github.com/Fahad-Alsubaihi/Kafka-Confluent-SingleStore-Docker-compose/blob/main/SingleStore-Pipeline-With-Kafka.md).
 
 - To Create JDBC Connector follow this Link [Create JDBC Connector](https://github.com/Fahad-Alsubaihi/Kafka-Confluent-SingleStore-Docker-compose/blob/main/JDBC-Connector.md).
   
