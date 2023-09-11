@@ -8,7 +8,7 @@ Select it:
 ```
 USE name_of_DB;
 ```
-Create new table match to Kafka Topic fildes:
+Create a new table match to Kafka Topic fields:
 ```
 CREATE TABLE name_of_table(
  f1 varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL 
@@ -34,7 +34,7 @@ SCHEMA REGISTRY 'IP:Port(ex:localhost:8081)'
 );
 
 ```
-Test your pipeline to check the configration work fine:
+Test your pipeline to check the configuration works fine:
 ```
 TEST PIPELINE name_of_pipeline;
 ```
@@ -49,4 +49,4 @@ Start your pipeline:
 START PIPELINE name_of_pipeline;
 ```
 
-Now you can see the messages that you write in your topic stored in SingleStore table.
+Now you can see the messages that you write in your topic stored in the SingleStore table.
