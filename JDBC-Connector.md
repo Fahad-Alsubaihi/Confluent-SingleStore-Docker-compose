@@ -15,22 +15,22 @@ you need to download one of these drivers:
 
 - MariaDB Connector/J (JDBC)
 
-we will go with SingelStore driver 
-follow this link [S2-JDBC-Connector](https://github.com/memsql/S2-JDBC-Connector/releases) and download the last virsion of JAR file
+We will go with the SingelStore driver 
+follow this link [S2-JDBC-Connector](https://github.com/memsql/S2-JDBC-Connector/releases) and download the last version of JAR file
 
 now open docker desktop agine -> go to connect container -> open files -> navigate to this path usr/share/confluent-hub-components/confluentinc-kafka-connect-jdbc/lib 
 
-drag JAR file and drop it into lib folder 
+drag the JAR file and drop it into the lib folder 
 
-now open CMD and navigate to docker compose file then run this command 
+now open CMD and navigate to docker-compose file then run this command 
 ```
 docker-compose restart
 ```
 
 ---------------
 ## source_connector.json:
-This Connector will create Topic and schema Automatically.
-Create json file whis this configration:
+This Connector will create the Topic and schema Automatically.
+Create a JSON file with this configuration:
 ```
 {
     "name":"Source_connector_Name",
@@ -56,8 +56,8 @@ Create json file whis this configration:
 }
 ```
 ## Sink_Connector.json:
-This Connector will create Table Automatically.
-Create json file whis this configration:
+This Connector will create a Table Automatically.
+Create JSON file with this configuration:
 ```
 {
     "name":"test03_Sink_Connector",
@@ -78,7 +78,7 @@ Create json file whis this configration:
 }
 ```
 ## MySql DB with JDBC Connector:
-Add this Container to docker Compose file:
+Add this Container to the docker Compose file:
 ```
   mysql:
     image: mysql:5.7
